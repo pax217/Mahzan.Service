@@ -48,19 +48,13 @@ namespace Mahzan.Business.EventsHandlers.Users.Login
             //Busca si el usuario existe
 
 
-            Models.Entities.Users users = await _loginRepository
+            await _loginRepository
                 .HandleRepository(new LoginDto
                 {
                     UserName = loginEvent.UserName,
                     Password = loginEvent.Password
                 });
 
-            if (users==null)
-            {
-                throw new LoginArgumentException(
-                    $"Usuario o contraseña no validos."
-                    );
-            }
 
             result.Token = await GetToken(loginEvent);
 

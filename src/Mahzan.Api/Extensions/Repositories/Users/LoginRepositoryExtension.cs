@@ -1,4 +1,5 @@
 ﻿using Mahzan.DataAccess.Repositories.Users.Login;
+using Mahzan.DataAccess.Rules.Users.Login;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using System;
@@ -17,7 +18,8 @@ namespace Mahzan.Api.Extensions.Repositories.Users
             services
                 .AddScoped<ILoginRepository>(
                 x => new LoginRepository(
-                    new NpgsqlConnection(connectionString)
+                    new NpgsqlConnection(connectionString),
+                    x.GetService<ILoginRules>()
                     ));
         }
     }

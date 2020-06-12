@@ -1,4 +1,5 @@
-﻿using Mahzan.Api.Extensions.Rules.Users.SignUp;
+﻿using Mahzan.Api.Extensions.Rules.Users.Login;
+using Mahzan.Api.Extensions.Rules.Users.SignUp;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,8 @@ namespace Mahzan.Api.Extensions.Rules
             string connectionString) 
         {
             SignUpRulesExtension
+                .Configure(services, connectionString);
+            LoginRulesExtension
                 .Configure(services, connectionString);
         }
     }

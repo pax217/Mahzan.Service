@@ -64,6 +64,10 @@ namespace Mahzan.Api.Controllers
             {
                 throw new ServiceArgumentException(ex);
             }
+            catch (InvalidOperationException ex)
+            {
+                throw new ServiceInvalidOperationException(ex);
+            }
 
             return Ok(result);
         }

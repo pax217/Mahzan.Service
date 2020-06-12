@@ -6,18 +6,26 @@ using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using System.Linq;
+using Mahzan.DataAccess.Rules.Users.Login;
 
 namespace Mahzan.DataAccess.Repositories.Users.Login
 {
     public class LoginRepository : DataConnection, ILoginRepository
     {
+        private readonly ILoginRules _loginRules;
+
         public LoginRepository(
-            IDbConnection dbConnection) : base(dbConnection)
+            IDbConnection dbConnection, 
+            ILoginRules loginRules) : base(dbConnection)
         {
+            _loginRules = loginRules;
         }
 
         public async Task<Models.Entities.Users> HandleRepository(LoginDto loginDto)
         {
+
+            await _loginRules.HandleRules(loginDto);
+
             StringBuilder sql = new StringBuilder();
             sql.Append("Select  * ");
             sql.Append("From    users ");
