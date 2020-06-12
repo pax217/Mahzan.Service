@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Mahzan.DataAccess\Mahzan.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="EventsServices\" />
+  </ItemGroup>
+
 </Project>

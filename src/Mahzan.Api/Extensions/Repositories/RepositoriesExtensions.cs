@@ -16,6 +16,10 @@ namespace Mahzan.Api.Extensions.Repositories
         {
             LoginRepositoryExtension
                 .Configure(services, connectionString);
+            SignUpRepositoryExtension
+                .Configure(services, connectionString);
+            ConfirmEmailRepositoryExtension
+                .Configure(services, connectionString);
         }
     }
 }

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Mahzan.Api.Exceptions;
+using Mahzan.Api.Extensions.Email;
 using Mahzan.Api.Extensions.EventsHandlers;
 using Mahzan.Api.Extensions.Jwt;
 using Mahzan.Api.Extensions.Repositories;
+using Mahzan.Api.Extensions.Rules.Users.SignUp;
 using Mahzan.Api.Extensions.Swagger;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +37,9 @@ namespace Mahzan.Api
 
             services.AddControllers();
 
+            //Email
+            EmailExtensions.Configure(services, _configuration);
+
             //Jwt 
             JwtExtensions.configure(services, _configuration);
 
@@ -47,6 +52,10 @@ namespace Mahzan.Api
 
             //Swagger
             SwaggerExtension.configure(services);
+
+            //Rules
+            SignUpRulesExtension
+                .Configure(services, _configuration.GetConnectionString("Mahzan"));
 
             //Repositories
             RepositoriesExtensions

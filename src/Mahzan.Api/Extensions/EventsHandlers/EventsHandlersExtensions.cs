@@ -14,6 +14,8 @@ namespace Mahzan.Api.Extensions.EventsHandlers
         {
             LoginEventHandlerExtension
                 .Configure(services);
+            SignUpEventHandlerExtension
+                .Configure(services);
         }
     }
 }
