@@ -1,4 +1,5 @@
 ﻿using Mahzan.Api.Extensions.Repositories._BaseController;
+using Mahzan.Api.Extensions.Repositories.Employees;
 using Mahzan.Api.Extensions.Repositories.Menu;
 using Mahzan.Api.Extensions.Repositories.Users;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -30,6 +31,10 @@ namespace Mahzan.Api.Extensions.Repositories
 
             //Menu
             GetAsideRepositoryExtension
+                .Configure(services, connectionString);
+
+            //Employees
+            CreateEmployeeRepositoryExtension
                 .Configure(services, connectionString);
         }
     }

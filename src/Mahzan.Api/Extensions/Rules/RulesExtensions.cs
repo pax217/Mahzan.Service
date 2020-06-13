@@ -1,4 +1,5 @@
-﻿using Mahzan.Api.Extensions.Rules.Users.Login;
+﻿using Mahzan.Api.Extensions.Rules.Employees;
+using Mahzan.Api.Extensions.Rules.Users.Login;
 using Mahzan.Api.Extensions.Rules.Users.SignUp;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -17,6 +18,8 @@ namespace Mahzan.Api.Extensions.Rules
             SignUpRulesExtension
                 .Configure(services, connectionString);
             LoginRulesExtension
+                .Configure(services, connectionString);
+            CreateEmployeeRulesExtension
                 .Configure(services, connectionString);
         }
     }

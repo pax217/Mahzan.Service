@@ -18,5 +18,8 @@ namespace Mahzan.Models.Entities
 
         public Guid TokenConfirmEmail { get; set; }
 
+        public Guid? UserPatternId { get; set; }
+
+        public string Email { get; set; }
     }
 }

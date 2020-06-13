@@ -1,4 +1,5 @@
-﻿using Mahzan.Api.Extensions.EventsHandlers.Menu;
+﻿using Mahzan.Api.Extensions.EventsHandlers.Employees;
+using Mahzan.Api.Extensions.EventsHandlers.Menu;
 using Mahzan.Api.Extensions.EventsHandlers.Users;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,6 +19,8 @@ namespace Mahzan.Api.Extensions.EventsHandlers
             SignUpEventHandlerExtension
                 .Configure(services);
             GetAsideEventHandlerExtension
+                .Configure(services);
+            CreateEmployeeEventHandlerExtension
                 .Configure(services);
         }
     }

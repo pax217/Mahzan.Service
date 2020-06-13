@@ -101,7 +101,7 @@ namespace Mahzan.Api.Controllers.V1
                 {
                     await _emailSender
                         .SendEmailAsync(
-                            "pax_217@hotmail.com",
+                            user.Email,
                             "Confirma tu Email",
                             $"Por favor confirma tu email, haz click <a href='http://159.203.81.150:5000/v1/users/confirm-email?userId={user.UserId}&tokenConfrimEmail={user.TokenConfirmEmail}'>aquí</a>");
                 }

@@ -9,5 +9,10 @@ namespace Mahzan.DataAccess.Repositories._BaseController
     public interface IBaseControllerRepository
     {
         User_Role GetRole(string userName);
+
+        Models.Entities.Users GetUser(string userName);
+
+        Members GetMember(string userName);
+
     }
 }

@@ -75,7 +75,8 @@ namespace Mahzan.DataAccess.Repositories.Users.SignUp
             insertUser.Append("password,");
             insertUser.Append("active,");
             insertUser.Append("confirm_email,");
-            insertUser.Append("token_confirm_email");
+            insertUser.Append("token_confirm_email,");
+            insertUser.Append("email");
             insertUser.Append(") ");
             insertUser.Append("Values ");
             insertUser.Append("(");
@@ -84,7 +85,8 @@ namespace Mahzan.DataAccess.Repositories.Users.SignUp
             insertUser.Append("@password,");
             insertUser.Append("@active,");
             insertUser.Append("@confirm_email,");
-            insertUser.Append("@token_confirm_email");
+            insertUser.Append("@token_confirm_email,");
+            insertUser.Append("@email");
             insertUser.Append(") ");
             insertUser.Append("RETURNING user_id; ");
 
@@ -99,7 +101,8 @@ namespace Mahzan.DataAccess.Repositories.Users.SignUp
                         password = signUpDto.Password,
                         active = true,
                         confirm_email = false,
-                        token_confirm_email = Guid.NewGuid()
+                        token_confirm_email = Guid.NewGuid(),
+                        email = signUpDto.Email
                     }
                 );
 
@@ -116,7 +119,6 @@ namespace Mahzan.DataAccess.Repositories.Users.SignUp
             insertMember.Append("member_id,");
             insertMember.Append("name,");
             insertMember.Append("phone,");
-            insertMember.Append("email,");
             insertMember.Append("user_id");
             insertMember.Append(")");
             insertMember.Append("Values ");
@@ -124,7 +126,6 @@ namespace Mahzan.DataAccess.Repositories.Users.SignUp
             insertMember.Append("@member_id,");
             insertMember.Append("@name,");
             insertMember.Append("@phone,");
-            insertMember.Append("@email,");
             insertMember.Append("@user_id");
             insertMember.Append(") ");
 
@@ -138,7 +139,6 @@ namespace Mahzan.DataAccess.Repositories.Users.SignUp
                         member_id = Guid.NewGuid(),
                         name = signUpDto.Name,
                         phone = signUpDto.Password,
-                        email = signUpDto.Email,
                         user_id = userId
                     }
                 );

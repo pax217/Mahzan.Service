@@ -106,6 +106,7 @@ namespace Mahzan.Business.EventsHandlers.Menu.GetAside
             {
                 MenuSubMenuId = subMenu.MenuSubMenuId,
                 Title = subMenu.Title,
+                Page = subMenu.Page,
                 Bullet = subMenu.Bullet
             };
         }

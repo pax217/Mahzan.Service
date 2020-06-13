@@ -1,0 +1,26 @@
+﻿using Mahzan.DataAccess.Rules.Employees.CreateEmployee;
+using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Mahzan.Api.Extensions.Rules.Employees
+{
+    public static class CreateEmployeeRulesExtension
+    {
+        public static void Configure(
+            IServiceCollection services,
+            string connectionString)
+        {
+
+            services
+                .AddScoped<ICreateEmployeeRules>(
+                x => new CreateEmployeeRules(
+                    new NpgsqlConnection(connectionString)
+                    ));
+
+        }
+    }
+}

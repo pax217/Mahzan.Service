@@ -27,5 +27,25 @@ namespace Mahzan.Api.Controllers._Base
                        .RoleId;
             }
         }
+        public Guid UserId
+        {
+            get
+            {
+                return _baseControllerRepository
+                       .GetUser(HttpContext.User.Claims.ToList()[0].Value)
+                       .UserId;
+            }
+        }
+
+        public Guid MemberId
+        {
+            get
+            {
+                return _baseControllerRepository
+                       .GetMember(HttpContext.User.Claims.ToList()[0].Value)
+                       .MemberId;
+            }
+        }
+
     }
 }
