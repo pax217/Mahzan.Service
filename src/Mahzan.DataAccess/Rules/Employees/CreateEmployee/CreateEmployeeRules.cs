@@ -55,7 +55,6 @@ namespace Mahzan.DataAccess.Rules.Employees.CreateEmployee
             }
 
             //Valida que el RoleIdExista
-
             if (!await RoleIdExist(createEmployeeDto.RoleId))
             {
                 throw new CreateEmployeeArgumentException(

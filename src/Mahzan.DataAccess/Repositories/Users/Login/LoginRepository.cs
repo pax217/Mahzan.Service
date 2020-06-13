@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Linq;
 using Mahzan.DataAccess.Rules.Users.Login;
+using Mahzan.DataAccess.Exceptions.Users.Login;
 
 namespace Mahzan.DataAccess.Repositories.Users.Login
 {
@@ -42,6 +43,14 @@ namespace Mahzan.DataAccess.Repositories.Users.Login
                         password = loginDto.Password
                     }
                 );
+
+            if (!users.Any())
+            {
+                throw new LoginArgumentException(
+                    $"No fue posible iniciar sesión, por favor verifica tu usuario y contraseña."
+                    );
+            }
+
 
             return users.FirstOrDefault();
         }
