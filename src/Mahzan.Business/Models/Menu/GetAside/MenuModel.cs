@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
 
 namespace Mahzan.Business.Models.Menu.GetAside
 {
+    [JsonObject(ItemNullValueHandling = NullValueHandling.Ignore)]
     public class MenuModel
     {
         public List<MenuSection> Aside = new List<MenuSection>();

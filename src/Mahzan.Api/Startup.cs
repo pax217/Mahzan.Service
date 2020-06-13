@@ -99,6 +99,14 @@ namespace Mahzan.Api
 
             app.UseRouting();
 
+            //Use Cors
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            app.UseAuthentication();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

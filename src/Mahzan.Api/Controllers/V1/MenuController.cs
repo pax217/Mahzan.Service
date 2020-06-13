@@ -30,8 +30,8 @@ namespace Mahzan.Api.Controllers.V1
         }
 
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [HttpGet("get-aside")]
-        public async Task<IActionResult> GetAside()
+        [HttpGet("aside")]
+        public async Task<IActionResult> Aside()
         {
             MenuModel result;
 
