@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Text.Json.Serialization;
 
 namespace Mahzan.Api
 {
@@ -29,6 +30,18 @@ namespace Mahzan.Api
             services.AddCors();
 
             services.AddControllers();
+
+            //Configura Ignorar valores null en json
+            services.AddMvc()
+                    .AddJsonOptions(options => {
+                        options.JsonSerializerOptions.IgnoreNullValues = true;
+                        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                    });
+            //Configura Ignorar referencias circulares
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
             //Email
             EmailExtensions.Configure(services, _configuration);

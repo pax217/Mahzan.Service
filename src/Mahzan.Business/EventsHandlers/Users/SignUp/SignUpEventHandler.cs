@@ -20,10 +20,10 @@ namespace Mahzan.Business.EventsHandlers.Users.SignUp
             _signUpRepository = signUpRepository;
         }
 
-        public async Task<Models.Entities.Users> HandleEvent(SignUpEvent signUpEvent)
+        public async Task<Mahzan.Models.Entities.Users> HandleEvent(SignUpEvent signUpEvent)
         {
 
-            Models.Entities.Users user = await _signUpRepository
+            Mahzan.Models.Entities.Users user = await _signUpRepository
                 .HandleRepository(new SignUpDto
                 {
                     Name = signUpEvent.Name,

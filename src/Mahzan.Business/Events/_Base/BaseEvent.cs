@@ -8,5 +8,7 @@ namespace Mahzan.Business.Events._Base
     {
         public Guid MembersId { get; set; }
         public Guid AspNetUserId { get; set; }
+
+        public Guid RoleId { get; set; }
     }
 }

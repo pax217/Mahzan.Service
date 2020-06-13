@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mahzan.DataAccess\Mahzan.DataAccess.csproj" />
+    <ProjectReference Include="..\Mahzan.Models\Mahzan.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

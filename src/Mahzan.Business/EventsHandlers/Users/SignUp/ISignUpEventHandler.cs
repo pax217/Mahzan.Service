@@ -4,11 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Mahzan.Models.Entities;
 
 namespace Mahzan.Business.EventsHandlers.Users.SignUp
 {
     public interface ISignUpEventHandler
     {
-        Task<Models.Entities.Users> HandleEvent(SignUpEvent signUpEvent); 
+        Task<Mahzan.Models.Entities.Users> HandleEvent(SignUpEvent signUpEvent); 
     }
 }

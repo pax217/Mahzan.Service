@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Mahzan.Api.Controllers
+namespace Mahzan.Api.Controllers.V1
 {
     [ApiVersion("1")]
     [Route("v{version:apiVersion}/[controller]")]
