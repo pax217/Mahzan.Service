@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Mahzan.DataAccess.DTO._Base
+namespace Mahzan.Api.Filters._Base
 {
-    public class BaseDto
+    public class BaseFilter
     {
-        public Guid MemberId { get; set; }
-        public Guid UserId { get; set; }
-        public Guid RoleId { get; set; }
-
         const int maxPageSize = 50;
         public int PageNumber { get; set; } = 1;
 

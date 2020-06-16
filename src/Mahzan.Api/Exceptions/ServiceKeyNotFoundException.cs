@@ -7,6 +7,10 @@ namespace Mahzan.Api.Exceptions
 {
     public class ServiceKeyNotFoundException : KeyNotFoundException
     {
+        public ServiceKeyNotFoundException(string message)
+            : base(message)
+        { }
+
         public ServiceKeyNotFoundException(string message, Exception exception)
             : base(message, exception)
         { }
@@ -14,5 +18,7 @@ namespace Mahzan.Api.Exceptions
         public ServiceKeyNotFoundException(Exception exception)
             : this(exception.Message, exception)
         { }
+
+
     }
 }

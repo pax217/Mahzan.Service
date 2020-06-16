@@ -5,11 +5,16 @@ using System.Threading.Tasks;
 using Mahzan.Api.Commands.Employees;
 using Mahzan.Api.Controllers._Base;
 using Mahzan.Api.Exceptions;
+using Mahzan.Api.Filters.Employees;
+using Mahzan.Api.Paging;
 using Mahzan.Api.Services;
+using Mahzan.Api.ViewModels.Employees.GetEmployees;
 using Mahzan.Business.Events.Employees;
 using Mahzan.Business.EventsHandlers.Employees.Create;
 using Mahzan.Business.Results.Employees;
+using Mahzan.DataAccess.DTO.Employees;
 using Mahzan.DataAccess.Repositories._BaseController;
+using Mahzan.DataAccess.Repositories.Employees.GetEmployees;
 using Mahzan.Models.Enums.Result;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -25,16 +30,20 @@ namespace Mahzan.Api.Controllers.V1
 
         private readonly ICreateEmployeeEventHandler _createEmployeeEvent;
 
+        private readonly IGetEmployeesRepository _getEmployeesRepository;
+
         private readonly IEmailSender _emailSender;
 
 
         public EmployeesController(
             IBaseControllerRepository baseControllerRepository,
             ICreateEmployeeEventHandler createEmployeeEvent,
-            IEmailSender emailSender) : base(baseControllerRepository)
+            IEmailSender emailSender, 
+            IGetEmployeesRepository getEmployeesRepository) : base(baseControllerRepository)
         {
             _createEmployeeEvent = createEmployeeEvent;
             _emailSender = emailSender;
+            _getEmployeesRepository = getEmployeesRepository;
         }
 
         [Authorize(AuthenticationSchemes = "Bearer")]
@@ -87,6 +96,64 @@ namespace Mahzan.Api.Controllers.V1
             return Ok(result);
         }
 
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpPut("update")]
+        public async Task<IActionResult> Update(UpdateEmployeeCommand command) 
+        {
+
+            return Ok();
+        }
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpDelete("delete")]
+        public async Task<IActionResult> Delete(UpdateEmployeeCommand command)
+        {
+
+            return Ok();
+        }
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [HttpGet()]
+        public async Task<IActionResult> Get([FromQuery] GetEmployeesFilter filter)
+        {
+            GetEmployeesViewModel getEmployeesViewModel = new GetEmployeesViewModel(); 
+
+            try
+            {
+                List<Models.EntitiesExtensions.EmployeesExtension> employees = await _getEmployeesRepository
+                    .HandleRepository(new GetEmployeesDto
+                    {
+                        EmployeeId = filter.EmployeeId,
+                        CodeEmployee = filter.CodeEmployee,
+                        FirstName = filter.FirstName,
+                        MemberId = MemberId,
+                    });
+
+                //PagedList
+                getEmployeesViewModel.employees = PagedList<Models.EntitiesExtensions.EmployeesExtension>
+                    .ToPagedList(
+                        employees,
+                        filter.PageNumber,
+                        filter.PageSize);
+
+                //Paging
+                getEmployeesViewModel.paging = new Paging.Paging
+                {
+                    TotalCount = getEmployeesViewModel.employees.TotalCount,
+                    PageSize = getEmployeesViewModel.employees.PageSize,
+                    CurrentPage = getEmployeesViewModel.employees.CurrentPage,
+                    TotalPages = getEmployeesViewModel.employees.TotalPages,
+                    HasNext = getEmployeesViewModel.employees.HasNext,
+                    HasPrevious = getEmployeesViewModel.employees.HasPrevious
+                };
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
+            return Ok(getEmployeesViewModel);
+        }
 
     }
 }

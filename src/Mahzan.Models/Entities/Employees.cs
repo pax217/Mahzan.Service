@@ -6,7 +6,7 @@ namespace Mahzan.Models.Entities
 {
     public class Employees
     {
-        public Guid EmployeesId { get; set; }
+        public Guid EmployeeId { get; set; }
 
         public string CodeEmploye { get; set; }
 

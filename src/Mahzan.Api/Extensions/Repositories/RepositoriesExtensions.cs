@@ -1,6 +1,7 @@
 ﻿using Mahzan.Api.Extensions.Repositories._BaseController;
 using Mahzan.Api.Extensions.Repositories.Employees;
 using Mahzan.Api.Extensions.Repositories.Menu;
+using Mahzan.Api.Extensions.Repositories.Roles;
 using Mahzan.Api.Extensions.Repositories.Users;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,6 +36,12 @@ namespace Mahzan.Api.Extensions.Repositories
 
             //Employees
             CreateEmployeeRepositoryExtension
+                .Configure(services, connectionString);
+            GetEmployeesRepositoryExtension
+                .Configure(services, connectionString);
+
+            //Roles
+            GetRolesRepositoryExtension
                 .Configure(services, connectionString);
         }
     }
