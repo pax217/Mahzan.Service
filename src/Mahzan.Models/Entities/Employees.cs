@@ -8,7 +8,7 @@ namespace Mahzan.Models.Entities
     {
         public Guid EmployeeId { get; set; }
 
-        public string CodeEmploye { get; set; }
+        public string CodeEmployee { get; set; }
 
         public string FirstName { get; set; }
 

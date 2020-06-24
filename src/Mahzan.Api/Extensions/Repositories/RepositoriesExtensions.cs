@@ -1,7 +1,10 @@
 ﻿using Mahzan.Api.Extensions.Repositories._BaseController;
+using Mahzan.Api.Extensions.Repositories.Companies;
 using Mahzan.Api.Extensions.Repositories.Employees;
+using Mahzan.Api.Extensions.Repositories.Groups;
 using Mahzan.Api.Extensions.Repositories.Menu;
 using Mahzan.Api.Extensions.Repositories.Roles;
+using Mahzan.Api.Extensions.Repositories.Stores;
 using Mahzan.Api.Extensions.Repositories.Users;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,6 +45,23 @@ namespace Mahzan.Api.Extensions.Repositories
 
             //Roles
             GetRolesRepositoryExtension
+                .Configure(services, connectionString);
+
+            //Groups
+            CreateGroupRepositoryExtension
+                .Configure(services, connectionString);
+            GetGroupsRepositoryExtension
+                .Configure(services, connectionString);
+
+
+            //Companies
+            CreateCompanyRepositoryExtension
+                .Configure(services, connectionString);
+            GetCompaniesRepositoryExtension
+                .Configure(services, connectionString);
+
+            //Stores
+            CreateStoreRepositoryExtension
                 .Configure(services, connectionString);
         }
     }

@@ -1,4 +1,7 @@
-﻿using Mahzan.Api.Extensions.Rules.Employees;
+﻿using Mahzan.Api.Extensions.Rules.Companies;
+using Mahzan.Api.Extensions.Rules.Employees;
+using Mahzan.Api.Extensions.Rules.Groups;
+using Mahzan.Api.Extensions.Rules.Stores;
 using Mahzan.Api.Extensions.Rules.Users.Login;
 using Mahzan.Api.Extensions.Rules.Users.SignUp;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +23,16 @@ namespace Mahzan.Api.Extensions.Rules
             LoginRulesExtension
                 .Configure(services, connectionString);
             CreateEmployeeRulesExtension
+                .Configure(services, connectionString);
+            CreateGroupRepositoryExtension
+                .Configure(services, connectionString);
+
+            //Companies
+            CreateCompanyRulesExtension
+                .Configure(services, connectionString);
+
+            //Stores
+            CreateStoreRulesExtension
                 .Configure(services, connectionString);
         }
     }
