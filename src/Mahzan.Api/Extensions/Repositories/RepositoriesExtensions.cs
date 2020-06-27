@@ -3,7 +3,9 @@ using Mahzan.Api.Extensions.Repositories.Companies;
 using Mahzan.Api.Extensions.Repositories.Employees;
 using Mahzan.Api.Extensions.Repositories.Groups;
 using Mahzan.Api.Extensions.Repositories.Menu;
+using Mahzan.Api.Extensions.Repositories.PointsOfSale;
 using Mahzan.Api.Extensions.Repositories.Roles;
+using Mahzan.Api.Extensions.Repositories.SalesUnits;
 using Mahzan.Api.Extensions.Repositories.Stores;
 using Mahzan.Api.Extensions.Repositories.Users;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -62,6 +64,18 @@ namespace Mahzan.Api.Extensions.Repositories
 
             //Stores
             CreateStoreRepositoryExtension
+                .Configure(services, connectionString);
+            GetStoresRepositoryExtension
+                .Configure(services, connectionString);
+
+            //Points Of Sale
+            CreatePointOfSaleRepositoryExtension
+                .Configure(services, connectionString);
+            GetPointsOfSaleRepositoryExtension
+                .Configure(services, connectionString);
+
+            //Sales Units
+            CreateSaleUnitRepositoryExtension
                 .Configure(services, connectionString);
         }
     }

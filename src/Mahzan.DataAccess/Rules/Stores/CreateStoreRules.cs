@@ -50,7 +50,7 @@ namespace Mahzan.DataAccess.Rules.Stores
 
             StringBuilder sql = new StringBuilder();
             sql.Append("select * from stores ");
-            sql.Append("and member_id = @cmember_idode ");
+            sql.Append("where member_id = @member_id ");
             sql.Append("and code = @code ");
 
             IEnumerable<Models.Entities.Stores> stores;
@@ -79,7 +79,7 @@ namespace Mahzan.DataAccess.Rules.Stores
 
             StringBuilder sql = new StringBuilder();
             sql.Append("select * from stores ");
-            sql.Append("and member_id = @cmember_idode ");
+            sql.Append("where member_id = @member_id ");
             sql.Append("and name = @name ");
 
             IEnumerable<Models.Entities.Stores> stores;
@@ -109,7 +109,7 @@ namespace Mahzan.DataAccess.Rules.Stores
 
             StringBuilder sql = new StringBuilder();
             sql.Append("select * from stores ");
-            sql.Append("and member_id = @cmember_idode ");
+            sql.Append("where member_id = @member_id ");
             sql.Append("and phone = @phone ");
 
             IEnumerable<Models.Entities.Stores> stores;

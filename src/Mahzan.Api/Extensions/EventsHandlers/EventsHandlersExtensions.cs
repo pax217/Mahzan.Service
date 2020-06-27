@@ -2,6 +2,7 @@
 using Mahzan.Api.Extensions.EventsHandlers.Employees;
 using Mahzan.Api.Extensions.EventsHandlers.Groups;
 using Mahzan.Api.Extensions.EventsHandlers.Menu;
+using Mahzan.Api.Extensions.EventsHandlers.PointsOfSale;
 using Mahzan.Api.Extensions.EventsHandlers.Stores;
 using Mahzan.Api.Extensions.EventsHandlers.Users;
 using Microsoft.Extensions.DependencyInjection;
@@ -41,6 +42,10 @@ namespace Mahzan.Api.Extensions.EventsHandlers
 
             //Stores
             CreateStoreEventHandlerExtension
+                .Configure(services);
+
+            //Points Of Sale
+            CreatePointOfSaleEventHandlerExtension
                 .Configure(services);
         }
     }
