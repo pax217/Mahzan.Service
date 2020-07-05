@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Mahzan.Api.Commands.Products.CreateProduct;
 using Mahzan.Api.Commands.SalesDepartments.CreateSaleDepartmentFull;
+using Mahzan.Business.Events.Products.CreateProduct;
 using Mahzan.DataAccess.DTO.SalesDepartments.CreateSalesDepartmentsFull;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,9 @@ namespace Mahzan.Api.Mapping
     {
         public MappingProfile() 
         {
+
+            #region Sales Departments
+
             CreateMap<CreateSalesCategoriesFullCommand, CreateSalesCategoriesFullDto>();
             CreateMap<CreateSalsesSectionsFullCommand, CreateSalsesSectionsFullDto>()
                 .ForMember(
@@ -43,7 +48,13 @@ namespace Mahzan.Api.Mapping
                         )
                 );
 
+            #endregion
 
+            #region Product
+
+            CreateMap<CreateProductDetailCommand, CreateProductDetailEvent>();
+
+            #endregion
         }
     }
 }
