@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace Mahzan.Api.Commands.SalesDepartments.CreateSaleDepartmentFull
 {
-    public class CreateSaleDepartmentFullCommand
+    public class CreateSalesDepartmentsFullCommand
     {
+        public List<CreateSalesDepartmentFullCommand> ListCreateSalesDepartmentFullCommand { get; set; }
     }
 }

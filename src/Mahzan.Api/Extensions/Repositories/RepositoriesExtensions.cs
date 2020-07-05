@@ -5,6 +5,7 @@ using Mahzan.Api.Extensions.Repositories.Groups;
 using Mahzan.Api.Extensions.Repositories.Menu;
 using Mahzan.Api.Extensions.Repositories.PointsOfSale;
 using Mahzan.Api.Extensions.Repositories.Roles;
+using Mahzan.Api.Extensions.Repositories.SalesDepartments;
 using Mahzan.Api.Extensions.Repositories.SalesUnits;
 using Mahzan.Api.Extensions.Repositories.Stores;
 using Mahzan.Api.Extensions.Repositories.Users;
@@ -76,6 +77,10 @@ namespace Mahzan.Api.Extensions.Repositories
 
             //Sales Units
             CreateSaleUnitRepositoryExtension
+                .Configure(services, connectionString);
+
+            //Sales Departments
+            CreateSalesDepartmentsFullRepositoryExtension
                 .Configure(services, connectionString);
         }
     }

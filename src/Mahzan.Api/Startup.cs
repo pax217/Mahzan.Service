@@ -11,7 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 using System.Text.Json.Serialization;
+using AutoMapper;
 
 namespace Mahzan.Api
 {
@@ -77,6 +79,9 @@ namespace Mahzan.Api
                     .ConfigureApiBehaviorOptions(options => {
                         options.InvalidModelStateResponseFactory = InvalidModelStateHandler.Handler;
                     });
+
+            //Automapper
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         }
 

@@ -1,6 +1,7 @@
 ﻿using Mahzan.Api.Extensions.Rules.Companies;
 using Mahzan.Api.Extensions.Rules.Employees;
 using Mahzan.Api.Extensions.Rules.Groups;
+using Mahzan.Api.Extensions.Rules.SalesDepartments.CreateSalesDepartmentsFull;
 using Mahzan.Api.Extensions.Rules.SalesUnits;
 using Mahzan.Api.Extensions.Rules.Stores;
 using Mahzan.Api.Extensions.Rules.Users.Login;
@@ -38,6 +39,10 @@ namespace Mahzan.Api.Extensions.Rules
 
             //Sales Units
             CreateSaleUnitRulesExtension
+                .Configure(services, connectionString);
+
+            //Sales Departments
+            CreateSalesDepartmentsFullRulesExtension
                 .Configure(services, connectionString);
         }
     }
